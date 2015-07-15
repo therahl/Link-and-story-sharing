@@ -1,9 +1,11 @@
-// angular.module('flapperNews', [])
-.controller('PostsCtrl', [
+// myApp = angular.module('flapperNews', ['ui.router', 'templates']);
+
+myApp.controller('PostsCtrl', [
   '$scope',
   '$stateParams',
   'posts',
   function($scope, $stateParams, posts) {
+    console.log("I am the post controller");
     $scope.post = posts.posts[$stateParams.id];
     $scope.addComment = function(){
       if($scope.body === ''){return;}

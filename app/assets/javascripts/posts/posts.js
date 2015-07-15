@@ -1,5 +1,6 @@
-angular.module('flapperNews', [])
-.factory('posts', [
+// myApp = angular.module('flapperNews', ['ui.router', 'templates']);
+
+myApp.factory('posts', [
   '$http',
   function($http) {
   var o = {

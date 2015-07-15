@@ -1,0 +1,20 @@
+myApp = angular.module('flapperNews', ['ui.router', 'templates']);
+
+myApp.config(
+    function($stateProvider, $urlRouterProvider) {
+          console.log("hey");
+      $urlRouterProvider.otherwise('home');
+      $stateProvider
+        .state('home', {
+          url: '/home',
+          // template: "<div>HELLO</div>",
+          templateUrl: '<%= asset_path("home/_home.html") %>',
+          controller: 'MainCtrl'
+        })
+        .state('posts', {
+          url: '/posts/{id}',
+          templateUrl: '<%= asset_path("posts/_posts.html") %>',
+          controller: 'PostsCtrl'
+        });
+    }
+);
