@@ -3,16 +3,19 @@ angular.module('flapperNews', ['ui.router', 'templates'])
     '$stateProvider',
     '$urlRouterProvider',
     function($stateProvider, $urlRouterProvider) {
+      console.log("hey there yo")
+
       $stateProvider
         .state('home', {
-          resolve: {
-            postPromise: ['posts', function(posts){
-              return posts.getAll();
-            }]
-          },
           url: '/home',
-          templateUrl: 'home/_home.html',
+          template: "<h1>HEREIAM</h1>",
+          // templateUrl: 'home/_home.html',
           controller: 'MainCtrl'
+          // resolve: {
+          //   postPromise: ['posts', function(posts){
+          //     return posts.getAll();
+          //   }]
+          // }
         })
         .state('posts', {
           url: '/posts/{id}',

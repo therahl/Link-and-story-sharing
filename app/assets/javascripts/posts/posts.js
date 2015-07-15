@@ -1,4 +1,4 @@
-angular.module('flapperNews', ['ui.router', 'templates'])
+angular.module('flapperNews', [])
 .factory('posts', [
   '$http',
   function($http) {
@@ -7,7 +7,9 @@ angular.module('flapperNews', ['ui.router', 'templates'])
   };
   o.getAll = function() {
     return $http.get('/posts.json').success(function(data){
-      angular.copy(data, o.posts);
+      angular.copy(data, o.posts).error(function(err){
+        console.log("posts service factory error on http get /posts.json")
+      });
     });
   };
   o.create = function(){
