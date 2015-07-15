@@ -9,23 +9,23 @@ def upvote
   post = Post.find(params[:id])
   post.increment!(:upvotes)
 
-  respond_with post
+  render json: post
 end
 
 def downvote
   post = Post.find(params[:id])
   post.decrement!(:upvotes)
 
-  respond_with post
+  render json: post
 end
 
 def show
 
-  respond_with Post.find(params[:id])
+  render json: Post.find(params[:id])
 end
 
 def create
-  respond_with Post.create(post_params)
+  render json: Post.create(post_params)
 end
 
 private
