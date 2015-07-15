@@ -1,4 +1,4 @@
-angular.module('flapperNews', [])
+// angular.module('flapperNews', [])
 .controller('MainCtrl', [
   '$scope',
   'posts',

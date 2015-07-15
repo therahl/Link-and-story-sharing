@@ -1,27 +1,33 @@
-angular.module('flapperNews', ['ui.router', 'templates'])
-  .config([
-    '$stateProvider',
-    '$urlRouterProvider',
-    function($stateProvider, $urlRouterProvider) {
-      console.log("hey there yo")
+myApp = angular.module('flapperNews', [])
 
-      $stateProvider
-        .state('home', {
-          url: '/home',
-          template: "<h1>HEREIAM</h1>",
-          // templateUrl: 'home/_home.html',
-          controller: 'MainCtrl'
-          // resolve: {
-          //   postPromise: ['posts', function(posts){
-          //     return posts.getAll();
-          //   }]
-          // }
-        })
-        .state('posts', {
-          url: '/posts/{id}',
-          templateUrl: 'posts/_posts.html',
-          controller: 'PostsCtrl'
-        });
-      $urlRouterProvider.otherwise('home');
-    }
-  ])
+myApp.controller('PpCtrl', [
+  '$scope',
+  function($scope){
+    console.log("i'm here!!");
+    $scope.test = "some text LALKSJKSJDSD";
+  }
+
+]);
+// debugger;
+//
+// myApp.config(
+//     function($stateProvider, $urlRouterProvider) {
+//       $urlRouterProvider.otherwise('home');
+//       $stateProvider
+//         .state('home', {
+//           url:"/fdsa",
+//           template: "<div>HELLO</div>"
+//         })
+//
+//           console.log("hey")
+        //   url: '/home',
+        //   templateUrl: 'home/_home.html',
+        //   controller: 'MainCtrl'
+        // })
+        // .state('posts', {
+        //   url: '/posts/{id}',
+        //   templateUrl: 'posts/_posts.html',
+        //   controller: 'PostsCtrl'
+        // });
+  //   }
+  // )
