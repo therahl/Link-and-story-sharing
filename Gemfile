@@ -15,6 +15,7 @@ gem 'angular-rails-templates'
 # gem 'bcrypt', '~> 3.1.7'
 gem 'responders'
 gem 'pry'
+gem 'devise'
 # Use Unicorn as the app server
 # gem 'unicorn'
 gem 'angular_rails_csrf'
