@@ -25,5 +25,15 @@ myApp.config(
             }]
           }
         });
+        .state('login', {
+          url: '/login',
+          templateUrl: '<%= asset_path("auth/_login.html") %>',
+          controller: 'AuthCtrl'
+        });
+        .state('register', {
+          url: '/register',
+          templateUrl: '<%= asset_path("auth/_register.html") %>',
+          controller: 'AuthCtrl'
+        })
     }
 );
