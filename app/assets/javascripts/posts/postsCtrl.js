@@ -18,9 +18,9 @@ myApp.controller('PostsCtrl', [
     };
     $scope.removeUpvote = function(comment) {
       comment.upvotes--;
-    }
+    };
     $scope.addUpvote = function(comment) {
       comment.upvotes++;
-    }
+    };
   }
 ])

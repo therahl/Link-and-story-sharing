@@ -8,16 +8,25 @@ myApp.factory('posts', [
   };
   o.getAll = function() {
     return $http.get('/posts.json').success(function(data){
-      angular.copy(data, o.posts).error(function(err){
-        console.log("posts service factory error on http get /posts.json")
+      angular.copy(data, o.posts);
       });
-    });
   };
   o.create = function(){
     return $http.post('/posts.json', post).success(function(data){
       o.posts.push(data);
     });
   };
-
+  o.upvote = function(post){
+    return $http.put('/posts/' + post.id + '/upvote.json')
+      .success(function(data){
+        post.upvotes += 1;
+      });
+  };
+  o.downvote = function(post){
+    return $http.put('/posts/' + post.id + '/downvote.json')
+      .success(function(data){
+        post.downvotes -= 1;
+      });
+  }
   return o;
 }]);

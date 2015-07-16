@@ -6,6 +6,7 @@ myApp.controller('MainCtrl', [
   function($scope, posts) {
     console.log("I am MainCtrl");
     $scope.posts = posts.posts;
+
     $scope.addPost = function() {
       if (!$scope.title || $scope.title === '') {
         return;
@@ -19,13 +20,13 @@ myApp.controller('MainCtrl', [
       $scope.link = '';
 
     };
-    //
-    // $scope.removeUpvote = function(post) {
-    //   post.upvotes--;
-    // };
-    // $scope.addUpvote = function(post) {
-    //   post.upvotes++;
-    // };
+
+    $scope.removeUpvote = function(post) {
+      post.downvote(post);
+    };
+    $scope.addUpvote = function(post) {
+      post.upvote(post);
+    };
 
   }
 ]);
