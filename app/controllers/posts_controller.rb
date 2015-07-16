@@ -1,7 +1,6 @@
 class PostsController < ApplicationController
 
 def index
-  # respond_with Post.all
   render json: Post.all
 end
 
@@ -20,7 +19,6 @@ def downvote
 end
 
 def show
-
   render json: Post.find(params[:id])
 end
 

@@ -3,7 +3,11 @@ class CommentsController < ApplicationController
   def create
     post = Post.find(params[:post_id])
     comment = post.comments.create(comment_params)
-    render json: post, comment
+    # respond_to do |f|
+    #   f.json (render json: {data: {posts: post, comments: comment}})
+    # end
+    respond_with post, comment
+
   end
 
   def upvote
@@ -11,7 +15,7 @@ class CommentsController < ApplicationController
     comment = post.comments.find(params[:id])
     comment.increment!(:upvotes)
 
-    render json: post, comment
+    respond_with post, comment
   end
 
   def downvote
@@ -19,7 +23,7 @@ class CommentsController < ApplicationController
     comment = post.comments.find(params[:id])
     comment.decrement!(:upvotes)
 
-    render json: post, comment
+    respond_with post, comment
 
   end
 

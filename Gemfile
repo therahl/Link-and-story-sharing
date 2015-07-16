@@ -14,9 +14,10 @@ gem 'angular-rails-templates'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 gem 'responders'
+gem 'pry'
 # Use Unicorn as the app server
 # gem 'unicorn'
-
+gem 'angular_rails_csrf'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 

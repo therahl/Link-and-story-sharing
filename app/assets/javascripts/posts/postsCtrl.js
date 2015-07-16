@@ -2,25 +2,27 @@
 
 myApp.controller('PostsCtrl', [
   '$scope',
-  '$stateParams',
+  'post',
   'posts',
-  function($scope, $stateParams, posts) {
+  function($scope, post, posts) {
     console.log("I am the post controller");
-    $scope.post = posts.posts[$stateParams.id];
+    $scope.post = post;
+
     $scope.addComment = function(){
       if($scope.body === ''){return;}
-      $scope.post.comments.push({
-        body: $scope.body,
-        author: 'user',
-        upvotes: 0
+      posts.addComment(post.id, {
+        body: $scope.body
+      }).success(function(comment){
+        $scope.post.comments.push(comment);
       });
       $scope.body = '';
     };
     $scope.removeUpvote = function(comment) {
-      comment.upvotes--;
+      posts.downvoteComment(post, comment);
     };
     $scope.addUpvote = function(comment) {
-      comment.upvotes++;
+      posts.upvoteComment(post, comment);
     };
+
   }
 ])

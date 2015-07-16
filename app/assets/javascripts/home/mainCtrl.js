@@ -13,7 +13,8 @@ myApp.controller('MainCtrl', [
       }
       posts.create({
         title: $scope.title,
-        link: $scope.link
+        link: $scope.link,
+        upvotes: 0
       });
 
       $scope.title = '';
@@ -22,10 +23,10 @@ myApp.controller('MainCtrl', [
     };
 
     $scope.removeUpvote = function(post) {
-      post.downvote(post);
+      posts.downvote(post);
     };
     $scope.addUpvote = function(post) {
-      post.upvote(post);
+      posts.upvote(post);
     };
 
   }

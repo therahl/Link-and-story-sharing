@@ -7,7 +7,6 @@ myApp.config(
       $stateProvider
         .state('home', {
           url: '/home',
-          // template: "<div>HELLO</div>",
           templateUrl: '<%= asset_path("home/_home.html") %>',
           controller: 'MainCtrl',
           resolve: {
@@ -19,7 +18,12 @@ myApp.config(
         .state('posts', {
           url: '/posts/{id}',
           templateUrl: '<%= asset_path("posts/_posts.html") %>',
-          controller: 'PostsCtrl'
+          controller: 'PostsCtrl',
+          resolve: {
+            post: ['$stateParams', 'posts', function($stateParams, posts){
+              return posts.get($stateParams.id);
+            }]
+          }
         });
     }
 );
