@@ -1,7 +1,7 @@
 myApp.controller('AuthCtrl', [
   '$scope',
   '$state',
-  'Aith',
+  'Auth',
   function($scope, $state, Auth){
     $scope.login = function(){
       Auth.login($scope.user).then(function(){
