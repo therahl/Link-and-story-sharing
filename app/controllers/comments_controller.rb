@@ -1,13 +1,11 @@
 class CommentsController < ApplicationController
 
+  before_filter :authenticate_user!, only: [:create, :upvote, :downvote]
+
   def create
     post = Post.find(params[:post_id])
-    comment = post.comments.create(comment_params)
-    # respond_to do |f|
-    #   f.json (render json: {data: {posts: post, comments: comment}})
-    # end
+    comment = post.comments.create(comment_params.merge(user_id: current_user.id))
     respond_with post, comment
-
   end
 
   def upvote
@@ -24,7 +22,6 @@ class CommentsController < ApplicationController
     comment.decrement!(:upvotes)
 
     respond_with post, comment
-
   end
 
 

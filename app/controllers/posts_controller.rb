@@ -1,5 +1,7 @@
 class PostsController < ApplicationController
 
+before_filter :authenticate_user!, only: [:create, :upvote, :downvote]
+
 def index
   render json: Post.all
 end
@@ -23,7 +25,7 @@ def show
 end
 
 def create
-  render json: Post.create(post_params)
+  render json: Post.create(post_params.merge(user_id: current_user.id))
 end
 
 private
