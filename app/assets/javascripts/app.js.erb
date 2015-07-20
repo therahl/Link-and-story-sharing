@@ -2,7 +2,6 @@ myApp = angular.module('flapperNews', ['ui.router', 'templates', 'Devise']);
 
 myApp.config(
     function($stateProvider, $urlRouterProvider) {
-      $urlRouterProvider.otherwise('home');
       $stateProvider
         .state('home', {
           url: '/home',
@@ -44,4 +43,17 @@ myApp.config(
             })
           }]
         })
+        .state('users', {
+          url: '/users/{id}',
+          // template: "<h1>I am USER COMMENTS and the route WORKS</h1>"
+          templateUrl: '<%= asset_path("user_comments/_user_comments.html") %>',
+          controller: 'UserCtrl',
+          resolve: {
+            user: ['$stateParams', 'userComments', function($stateParams, userComments){
+              console.log("stateParams ID: " + $stateParams.id);
+              return userComments.get($stateParams.id);
+            }]
+          }
+        })
+      $urlRouterProvider.otherwise('home');
 });

@@ -1,0 +1,25 @@
+<div class="page-header">
+  Posts made by {{comments[0].user.username}}
+</div>
+
+<h1>
+  Submitted by user:
+</h1>
+<div ng-repeat="post in posts">
+  <a href="#/posts/{{post.id}}">
+    {{post.title}}
+  </a>
+</div>
+
+<h1>
+  Comments by user:
+</h1>
+<div ng-repeat="comment in comments">
+  <a ng-href="#/posts/{{comment.post_id}}">
+    <h3>{{comment.post.title}}</h3>
+  </a>
+    <p>
+      {{comment.body}}
+    </p>
+  {{comment.upvotes}} - by {{comment.user.username}} on {{comment.user.created_at | date}}
+</div>

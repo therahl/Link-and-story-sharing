@@ -23,6 +23,7 @@ myApp.controller('NavCtrl', [
     $scope.$on('devise:logout', function(e, user) {
       console.log("LOGOUT SUCCESS");
       $scope.user = {};
+      $route.reload();
     });
   }
 ]);
