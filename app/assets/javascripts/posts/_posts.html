@@ -1,31 +1,31 @@
-
-
-      <div class="page-header">
-        <h3>
-          <a ng-show="post.link" href="{{post.link}}">
+<div class="page-header">
+  <h3>
+    <a ng-show="post.link" href="{{post.link}}">
         {{post.title}}
       </a>
-          <span ng-hide="post.link">{{post.title}}</span>
-        </h3>
-        <p ng-show="{{post.title}}">
-          {{post.description}}
-        </p>
-      </div>
+    <span ng-hide="post.link">{{post.title}}</span>
+  </h3>
+  Posted by: <a href="#/users/{{post.user_id}}">{{post.user.username}} </a>
+  <p ng-show="{{post.title}}">
+    {{post.description}}
+  </p>
+</div>
 
-      <div ng-repeat="comment in post.comments | orderBy: '-upvotes'">
-        <span class="glyphicon glyphicon-arrow-up" ng-click="addUpvote(comment)"></span>
-        <span class="glyphicon glyphicon-arrow-down" ng-click="removeUpvote(comment)"></span>
-        {{comment.upvotes}} - by {{comment.user.username}} <br>
-        <span style="font-size:20px; margin-left:10px;">
-          {{comment.body}}
-        </span>
-      </div>
+<div ng-repeat="comment in post.comments | orderBy: '-upvotes'">
+  <span class="glyphicon glyphicon-arrow-up" ng-click="addUpvote(comment)"></span>
+  {{comment.upvotes}}
+  <span class="glyphicon glyphicon-arrow-down" ng-click="removeUpvote(comment)"></span>
+  <span style="font-size:20px; margin-left:10px;">
+    {{comment.body}}
+  </span>
+  by <a href="#/users/{{comment.user.id}}">{{comment.user.username}} </a>
+</div>
 
-      <form ng-submit="addComment()" style="margin-top:30px;">
-        <h3>Add a new comment</h3>
+<form ng-submit="addComment()" style="margin-top:30px;">
+  <h3>Add a new comment</h3>
 
-        <div class="form-group">
-          <input type="text" class="form-control" placeholder="Comment" ng-model="body"></input>
-        </div>
-        <button type="submit" class="btn btn-primary">Post</button>
-      </form>
+  <div class="form-group">
+    <input type="text" class="form-control" placeholder="Comment" ng-model="body"></input>
+  </div>
+  <button type="submit" class="btn btn-primary">Post</button>
+</form>
