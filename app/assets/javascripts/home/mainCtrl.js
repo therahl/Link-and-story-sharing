@@ -14,14 +14,19 @@ myApp.controller('MainCtrl', [
       posts.create({
         title: $scope.title,
         link: $scope.link,
+        description: $scope.description,
         upvotes: 0
       });
 
       $scope.title = '';
       $scope.link = '';
-
+      $scope.description = '';
+      $scope.showPostForm = false;
     };
-
+    $scope.showPostForm = false;
+    $scope.togglePostForm = function(){
+      $scope.showPostForm = !$scope.showPostForm;
+    };
     $scope.removeUpvote = function(post) {
       posts.downvote(post);
     };
