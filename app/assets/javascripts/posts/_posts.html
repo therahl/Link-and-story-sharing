@@ -18,14 +18,16 @@
   <span style="font-size:20px; margin-left:10px;">
     {{comment.body}}
   </span>
-  by <a href="#/users/{{comment.user.id}}">{{comment.user.username}} </a>
+  by <a href="#/users/{{comment.user.id}}">{{comment.user.username}} </a> on {{comment.created_at | date}}
 </div>
 
 <form ng-submit="addComment()" style="margin-top:30px;">
   <h3>Add a new comment</h3>
 
   <div class="form-group">
-    <input type="text" class="form-control" placeholder="Comment" ng-model="body"></input>
+    <input ng-show="signedIn()" type="text" class="form-control" placeholder="Comment" ng-model="body"></input>
+    <input ng-show="!signedIn()" type="text" class="form-control" placeholder="Login to leave a comment..." ng-model="body" disabled></input>
   </div>
-  <button type="submit" class="btn btn-primary">Post</button>
+  <button ng-show="signedIn()" type="submit" class="btn btn-primary">Post</button>
+  <button ng-show="!signedIn()" type="submit" class="btn btn-primary" disabled>Post</button>
 </form>
