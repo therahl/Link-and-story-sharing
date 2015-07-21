@@ -1,7 +1,7 @@
 
       <div class="page-header">
         <h1>Flapper News</h1>
-        <button ng-click="togglePostForm()" class="btn btn-primary">Add a new post</button>
+        <button ng-show="signedIn()" ng-click="togglePostForm()" class="btn btn-primary">Add a new post</button>
       </div>
       Sort by:
       <span ng-click="sortFilter = '-upvotes'">Upvotes</span> |
@@ -23,8 +23,8 @@
 
       <div ng-repeat="post in posts | orderBy:sortFilter">
         <span ng-click="addUpvote(post)" class="glyphicon glyphicon-arrow-up"></span>
+          {{post.upvotes}}
         <span ng-click="removeUpvote(post)" class="glyphicon glyphicon-arrow-down"></span>
-        {{post.upvotes}}
         <span style="font-size:20px; margin-left:10px;">
 
           <a ng-show="post.link" href="{{post.link}}">{{post.title}}</a>
