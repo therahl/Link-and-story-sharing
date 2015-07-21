@@ -15,11 +15,16 @@
   Comments by user:
 </h1>
 <div ng-repeat="comment in comments">
-  <a ng-href="#/posts/{{comment.post_id}}">
-    <h3>{{comment.post.title}}</h3>
-  </a>
+  <div class="home-post" style="display: block;">
+
+    <a ng-href="#/posts/{{comment.post_id}}">
+      <h3>{{comment.post.title}}</h3>
+    </a>
     <p>
       {{comment.body}}
     </p>
-  {{comment.upvotes}} - by {{comment.user.username}} on {{comment.user.created_at | date}}
+    <span class="details">
+      {{comment.upvotes}} upvotes - on {{comment.user.created_at | date}}
+    </span>
+  </div>
 </div>

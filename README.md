@@ -1,6 +1,4 @@
 README
 =======
 
-This is a reddit clone site built with angular and rails.
-
-Yes.
+An internet forum style site built with angular and rails4.

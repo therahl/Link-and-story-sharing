@@ -11,14 +11,23 @@
   </p>
 </div>
 
-<div ng-repeat="comment in post.comments | orderBy: '-upvotes'">
+<div class="home-post" ng-repeat="comment in post.comments | orderBy: '-upvotes'">
+  <div class="votes">
+
   <span class="glyphicon glyphicon-arrow-up" ng-click="addUpvote(comment)"></span>
   {{comment.upvotes}}
   <span class="glyphicon glyphicon-arrow-down" ng-click="removeUpvote(comment)"></span>
-  <span style="font-size:20px; margin-left:10px;">
+  </div>
+  <div>
+
+  <span style="margin-left:10px;">
     {{comment.body}}
-  </span>
+  </span><br>
+  <span class="details">
+
   by <a href="#/users/{{comment.user.id}}">{{comment.user.username}} </a> on {{comment.created_at | date}}
+  </span>
+  </div>
 </div>
 
 <form ng-submit="addComment()" style="margin-top:30px;">
